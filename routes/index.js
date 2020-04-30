@@ -44,63 +44,92 @@ router.get('/homepage', function(req, res, next) {
   res.render('homepage', { title: 'Express' });
 });
 
-router.post('/cities', function(req, res, next) {
+router.post('/cities', async function(req, res, next) {
+
+  // var dateFormat = function(date){
+  //   var newDate = new Date(date);
+  //   var format = newDate.getDate()+'/'+(newDate.getMonth()+1)+'/'+newDate.getFullYear();
+  //   return format;
+  // }
+  // console.log(dateFormat(req.body.dateFromFront))
+
+ var newJourney = {
+  departure : req.body.toCityFromFront,
+  arrival : req.body.fromCityFromFront,
+  date : req.body.dateFromFront
+ }
+
+console.log(newJourney.date)
 
 
-  res.render('homepage', { title: 'Express' });
+
+
+ var journeys = await journeyModel.find({ departure: newJourney.departure, arrival: newJourney.arrival});
+
+ for(var i=0; i<journeys.length; i++){
+   var date = new Date(journeys[i].date)
+   var strDate = date.toGMTString()
+   console.log(strDate)
+
+ }
+ console.log(date)
+
+console.log(journeys)
+
+  res.render('homepage', { journeys, newJourney });
 });
 
 // Remplissage de la base de donnée, une fois suffit
-router.get('/save', async function(req, res, next) {
+// router.get('/save', async function(req, res, next) {
 
-  // How many journeys we want
-  var count = 300
+//   // How many journeys we want
+//   var count = 300
 
-  // Save  ---------------------------------------------------
-    for(var i = 0; i< count; i++){
+//   // Save  ---------------------------------------------------
+//     for(var i = 0; i< count; i++){
 
-    departureCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-    arrivalCity = city[Math.floor(Math.random() * Math.floor(city.length))]
+//     departureCity = city[Math.floor(Math.random() * Math.floor(city.length))]
+//     arrivalCity = city[Math.floor(Math.random() * Math.floor(city.length))]
 
-    if(departureCity != arrivalCity){
+//     if(departureCity != arrivalCity){
 
-      var newUser = new journeyModel ({
-        departure: departureCity , 
-        arrival: arrivalCity, 
-        date: date[Math.floor(Math.random() * Math.floor(date.length))],
-        departureTime:Math.floor(Math.random() * Math.floor(23)) + ":00",
-        price: Math.floor(Math.random() * Math.floor(125)) + 25,
-      });
+//       var newUser = new journeyModel ({
+//         departure: departureCity , 
+//         arrival: arrivalCity, 
+//         date: date[Math.floor(Math.random() * Math.floor(date.length))],
+//         departureTime:Math.floor(Math.random() * Math.floor(23)) + ":00",
+//         price: Math.floor(Math.random() * Math.floor(125)) + 25,
+//       });
        
-       await newUser.save();
+//        await newUser.save();
 
-    }
+//     }
 
-  }
-  res.render('index', { title: 'Express' });
-});
+//   }
+//   res.render('index', { title: 'Express' });
+// });
 
 
-// Cette route est juste une verification du Save.
-// Vous pouvez choisir de la garder ou la supprimer.
-router.get('/result', function(req, res, next) {
+// // Cette route est juste une verification du Save.
+// // Vous pouvez choisir de la garder ou la supprimer.
+// router.get('/result', function(req, res, next) {
 
-  // Permet de savoir combien de trajets il y a par ville en base
-  for(i=0; i<city.length; i++){
+//   // Permet de savoir combien de trajets il y a par ville en base
+//   for(i=0; i<city.length; i++){
 
-    journeyModel.find( 
-      { departure: city[i] } , //filtre
+//     journeyModel.find( 
+//       { departure: city[i] } , //filtre
   
-      function (err, journey) {
+//       function (err, journey) {
 
-          console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
-      }
-    )
+//           console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
+//       }
+//     )
 
-  }
+//   }
 
 
-  res.render('index', { title: 'Express' });
-});
+//   res.render('index', { title: 'Express' });
+// });
 
 module.exports = router;

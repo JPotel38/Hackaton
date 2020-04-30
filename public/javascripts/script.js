@@ -1,3 +1,3 @@
-var date = document.getElementById("date");
-
+var date = document.getElementById('date')
+dateFormat(date)
 console.log(date)
