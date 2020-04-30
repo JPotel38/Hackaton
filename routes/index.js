@@ -78,7 +78,11 @@ console.log(journeys)
 
   res.render('homepage', { journeys, newJourney });
 });
+router.get('/avaiblejourney', function(req, res, next) {
 
+
+  res.render('avaiblejourney', { title: 'Express' });
+});
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {
 

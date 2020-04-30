@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <%-  include('navbar'); %>
+    <div class='corp d-flex flex-column col-12 align-items-center mt-5'>
+        <h4 class="titleForm ">Tickets available on <%= %>:</h4>
+        <!-- for(var i=0;i<;i++){-->
+        <div class="row structure d-flex align-items-center col-xs-12 col-sm-10 col-md-8 col-lg-5 justify-content-between mt-2">
+            <div>
+            Ville1/Ville2
+            </div>
+            <div class='d-none d-sm-block mt-1'> 
+                <h6>train departure at: 15:00 pm</h6>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mr-3">
+                99€
+                <a href="/ajout/?villedepart=&villearrivee=&date=&heuredepart=&prix="><button class="btn bouton btn-danger ml-3">Ok</button></a>
+            </div>
+        </div>
+        <div class="row structure d-flex align-items-center col-xs-12 col-sm-10 col-md-8 col-lg-5 justify-content-between mt-2">
+            <div>
+            Ville1/Ville2
+             </div>
+            <div class='d-none d-sm-block mt-1'> 
+                <h6 >train departure at: 15:00 pm</h6>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center mr-3">
+                99€
+                <a href="/ajout/?villedepart=&villearrivee=&date=&heuredepart=&prix="><button class="btn bouton btn-danger ml-3">Ok</button></a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html> 
