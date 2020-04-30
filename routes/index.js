@@ -49,7 +49,11 @@ router.get('/cities', function(req, res, next) {
 
   res.render('homepage', { title: 'Express' });
 });
+router.get('/avaiblejourney', function(req, res, next) {
 
+
+  res.render('avaiblejourney', { title: 'Express' });
+});
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
 

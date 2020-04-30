@@ -21,3 +21,16 @@ a:hover{
 .titleForm{
   color: white;
 }
+h6{
+  color:gray;
+  font-size: 9px;
+}
+.structure{
+  background-color: white;
+  border-radius: 1%;
+}
+.bouton{
+  height:  10% max-content;;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
