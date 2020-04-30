@@ -1,8 +1,23 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin:0;
+  background: rgb(122,188,255);
+}
+.navbar{
+  background-color: #F5F6FA;
+}
+.navbar:link{
+  text-decoration:none;
 }
 
-a {
-  color: #00B7FF;
+a{
+  color:black;
+}
+a:hover{
+    color: red;
+}
+.titleForm{
+  color: white;
 }
