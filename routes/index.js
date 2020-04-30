@@ -13,7 +13,7 @@ var options = {
  };
 
 // --------------------- BDD -----------------------------------------------------
-mongoose.connect('mongodb+srv://JeremyP:alvardbcapsule@cluster0-hnrk8.mongodb.net/hackathon?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://JeremyP:alvardbcapsule@cluster0-hnrk8.mongodb.net/Ticketac?retryWrites=true&w=majority',
    options,
    function(err) {
     if (err) {
@@ -44,7 +44,7 @@ router.get('/homepage', function(req, res, next) {
   res.render('homepage', { title: 'Express' });
 });
 
-router.get('/cities', function(req, res, next) {
+router.post('/cities', function(req, res, next) {
 
 
   res.render('homepage', { title: 'Express' });
