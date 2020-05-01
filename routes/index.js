@@ -80,19 +80,22 @@ var journeyDate = []
       price : journeys[i].price
     })
   }
-}
-console.log(journeyDate)
-console.log(journeys)
- 
-res.render('avalaiblejourney', { journeys, newJourney })
 
- })
+  
+}
+if(journeyDate.length <=0) {
+
+  res.redirect('/nofound')
+} else { 
+
+  res.redirect('/avalaiblejourney')
+} })
 
 
 router.get('/avalaiblejourney', function(req, res, next) {
 
 
-  res.render('avalaiblejourney', { title: 'Express' });
+  res.render('avalaiblejourney', { journeyDate: journeyDate});
 });
 
 router.get('/nofound', function(req, res, next) {
