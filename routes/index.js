@@ -46,38 +46,53 @@ router.get('/homepage', function(req, res, next) {
 
 router.post('/cities', async function(req, res, next) {
 
-  // var dateFormat = function(date){
-  //   var newDate = new Date(date);
-  //   var format = newDate.getDate()+'/'+(newDate.getMonth()+1)+'/'+newDate.getFullYear();
-  //   return format;
-  // }
+var dateFormat = function(date){
+var newDate = new Date(date);
+var format = newDate.getDate()+'/'+(newDate.getMonth()+1)+'/'+newDate.getFullYear();
+return format;
+}
   // console.log(dateFormat(req.body.dateFromFront))
 
  var newJourney = {
   departure : req.body.toCityFromFront,
   arrival : req.body.fromCityFromFront,
-  date : req.body.dateFromFront
+  date : dateFormat(req.body.dateFromFront)
  }
 
 console.log(newJourney.date)
 
 
+var journeyDate = []
 
+ var journeys = await journeyModel.find({ 
+   departure: newJourney.departure, 
+   arrival: newJourney.arrival,
+  });
+  for(var i = 0;i<journeys.length; i++){
+   
+  if(dateFormat(journeys[i].date) === newJourney.date){
+    console.log("Bravo")
+    journeyDate.push({
+      departure : journeys[i].departure,
+      arrival : journeys[i].arrival,
+      date: dateFormat(journeys[i].date),
+      departureTime: journeys[i].departureTime,
+      price : journeys[i].price
+    })
 
- var journeys = await journeyModel.find({ departure: newJourney.departure, arrival: newJourney.arrival});
+    
 
- for(var i=0; i<journeys.length; i++){
-   var date = new Date(journeys[i].date)
-   var strDate = date.toGMTString()
-   console.log(strDate)
+  }
 
- }
- console.log(date)
-
+}
+console.log(journeyDate)
 console.log(journeys)
+ 
+res.render('avalaiblejourney', { journeys, newJourney })
 
-  res.render('avalaiblejourney', { journeys, newJourney });
-});
+ })
+
+
 router.get('/avalaiblejourney', function(req, res, next) {
 
 
