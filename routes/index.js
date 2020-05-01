@@ -128,26 +128,12 @@ router.get('/plannedjourney', function(req, res, next) {
   res.render('plannedjourney', {  panier:req.session.panier } );
 }});
 router.get('/save', async function(req, res, next) {
-<<<<<<< HEAD
-
- 
-  
-  
-  
-
-  var user = await userModel.findById({_id:req.session.user.id})
-  console.log(user.orders)  
-  for(var i =0; i<req.session.panier.length; i++){
-    
-    user.orders.push({
-=======
   if(req.session.user===null || req.session.user===undefined){
     res.redirect('/');
   }else{
   var user = await userModel.findById({_id:req.session.user.id})
   for(var i =0; i<req.session.panier.length; i++){
       user.orders.push({
->>>>>>> 60341da540c1aee2ac5f35fc6db103bdafc84046
       departure: req.session.panier[i].villedepart,
       arrival: req.session.panier[i].villearrivee,
       date: req.session.panier[i].date,
