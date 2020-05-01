@@ -3,6 +3,7 @@ var router = express.Router();
 
 const mongoose = require('mongoose');
 const journeyModel = require('../models/journey')
+const orderModel = require('../models/orders')
 const userModel = require('../models/users')
 
 // useNewUrlParser ;)
@@ -29,7 +30,7 @@ mongoose.connect('mongodb+srv://JeremyP:alvardbcapsule@cluster0-hnrk8.mongodb.ne
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
-
+var journeyDate = []
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -62,7 +63,7 @@ return format;
 console.log(newJourney.date)
 
 
-var journeyDate = []
+
 
  var journeys = await journeyModel.find({ 
    departure: newJourney.departure, 
@@ -88,19 +89,29 @@ if(journeyDate.length <=0) {
   res.redirect('/nofound')
 } else { 
 
-  res.redirect('/avalaiblejourney')
+  res.render('avalaiblejourney', {journeyDate: journeyDate})
 } })
 
 
 router.get('/avalaiblejourney', function(req, res, next) {
 
 
-  res.render('avalaiblejourney', { journeyDate: journeyDate});
+  res.render('avalaiblejourney', {journeyDate: journeyDate});
 });
 
 router.get('/nofound', function(req, res, next) {
   res.render('nofound', { title: 'Express' });
 });
+
+router.get('/ajout', async function(req, res, next) {
+  var order = await orderModel.findById(req.query.id)
+                              .populate('orders')
+                              .exec()
+
+console.log(req.query)
+  res.render('plannedjourney', { order });
+});
+
 router.get('/plannedjourney', function(req, res, next) {
   res.render('plannedjourney', { title: 'Express' });
 });

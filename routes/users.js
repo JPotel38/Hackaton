@@ -44,6 +44,7 @@ router.post('/sign-in', async function(req,res,next){
   })
 
   if(searchUser!= null){
+    console.log(searchUser)
     req.session.user = {
       name: searchUser.name,
       id: searchUser._id
