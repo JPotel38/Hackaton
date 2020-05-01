@@ -79,11 +79,7 @@ var journeyDate = []
       departureTime: journeys[i].departureTime,
       price : journeys[i].price
     })
-
-    
-
   }
-
 }
 console.log(journeyDate)
 console.log(journeys)
@@ -98,6 +94,7 @@ router.get('/avalaiblejourney', function(req, res, next) {
 
   res.render('avalaiblejourney', { title: 'Express' });
 });
+
 router.get('/nofound', function(req, res, next) {
   res.render('nofound', { title: 'Express' });
 });
