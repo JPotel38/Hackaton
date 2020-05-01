@@ -2,12 +2,11 @@ body {
  
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  min-height: 100%;
+  min-height: 100vh;
   padding: 0;
   margin:0;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,207cca+51,7db9e8+100;Blue+Gloss+Default */
-background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-
+  background: linear-gradient(to bottom, rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%);
 }
 .navbar{
   background-color: #F5F6FA;
