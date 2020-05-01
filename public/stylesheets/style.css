@@ -2,6 +2,10 @@ body {
  
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+<<<<<<< HEAD
+=======
+  min-height: 100%;
+>>>>>>> cb26892ad6a93e9feb6fb97ce8be0b05e6e31eaa
   padding: 0;
   margin:0;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,207cca+51,7db9e8+100;Blue+Gloss+Default */
@@ -37,3 +41,20 @@ h6{
   margin-top: 5%;
   margin-bottom: 5%;
 }
+<<<<<<< HEAD
+=======
+.landmark{
+  width: 40%;
+}
+#plannedjourney{
+  overflow: hidden;
+  max-width:100%;
+  background-color: white;
+}
+#id{
+  width: 10%;
+}
+#tempo{
+  border-radius: 1%;
+}
+>>>>>>> cb26892ad6a93e9feb6fb97ce8be0b05e6e31eaa
