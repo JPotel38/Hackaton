@@ -134,7 +134,7 @@ router.get('/save', async function(req, res, next) {
   
   
 
-  var user = await userModel.findById(req.session.user.id)
+  var user = await userModel.findById({_id:req.session.user.id})
   console.log(user.orders)  
   for(var i =0; i<req.session.panier.length; i++){
     

@@ -60,6 +60,7 @@ console.log(req.session.user.id)
 router.get('/logout', function(req,res,next){
 
   req.session.user = null;
+  req.session.panier = [];
 
   res.redirect('/')
 })
