@@ -11,32 +11,20 @@
     <%-  include('navbar'); %>
     <div class='corp d-flex flex-column col-12 align-items-center mt-5'>
         <h4 class="titleForm ">Tickets available on <%= %>:</h4>
-        <!-- for(var i=0;i<;i++){-->
+        <% for(var i=0;i<journeyDate.length;i++){ %> 
         <div class="row structure d-flex align-items-center col-xs-12 col-sm-10 col-md-8 col-lg-5 justify-content-between mt-2">
             <div>
-            Ville1/Ville2
+            <%= journeyDate[i].departure %>/<%= journeyDate[i].arrival %> 
             </div>
             <div class='d-none d-sm-block mt-1'> 
-                <h6>train departure at: 15:00 pm</h6>
+                <h6>train departure at: <%= journeyDate[i].departureTime %>  pm</h6>
             </div>
             <div class="row d-flex align-items-center justify-content-center mr-3">
-                99€
-                <a href="/ajout/?villedepart=&villearrivee=&date=&heuredepart=&prix="><button class="btn bouton btn-danger ml-3">Ok</button></a>
+                <%= journeyDate[i].price %>€
+                <a href="/ajout/?villedepart=<%= journeyDate[i].departure %>&villearrivee=<%= journeyDate[i].arrival %>&date=<%= journeyDate[i].date %>&heuredepart=<%= journeyDate[i].departureTime %>&prix=<%= journeyDate[i].price %>"><button class="btn bouton btn-danger ml-3">Ok</button></a>
             </div>
         </div>
-        <div class="row structure d-flex align-items-center col-xs-12 col-sm-10 col-md-8 col-lg-5 justify-content-between mt-2">
-            <div>
-            Ville1/Ville2
-             </div>
-            <div class='d-none d-sm-block mt-1'> 
-                <h6 >train departure at: 15:00 pm</h6>
-            </div>
-            <div class="row d-flex align-items-center justify-content-center mr-3">
-                99€
-                <a href="/ajout/?villedepart=&villearrivee=&date=&heuredepart=&prix="><button class="btn bouton btn-danger ml-3">Ok</button></a>
-            </div>
-        </div>
-        
+        <% }  %>        
     </div>
 </body>
 </html> 

@@ -30,7 +30,7 @@ mongoose.connect('mongodb+srv://JeremyP:alvardbcapsule@cluster0-hnrk8.mongodb.ne
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
-var journeyDate = []
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -62,7 +62,7 @@ return format;
 
 console.log(newJourney.date)
 
-
+var journeyDate = []
 
 
  var journeys = await journeyModel.find({ 
@@ -79,19 +79,19 @@ console.log(newJourney.date)
       date: dateFormat(journeys[i].date),
       departureTime: journeys[i].departureTime,
       price : journeys[i].price
-    })
+    }) 
   }
 
   
 }
+console.log(journeyDate)
 if(journeyDate.length <=0) {
 
-  res.redirect('/nofound')
+  res.redirect('/nofound');
 } else { 
 
-  res.render('avalaiblejourney', {journeyDate: journeyDate})
-} })
-
+  res.render('avalaiblejourney', {journeyDate});
+}});
 
 router.get('/avalaiblejourney', function(req, res, next) {
 
@@ -103,20 +103,27 @@ router.get('/nofound', function(req, res, next) {
   res.render('nofound', { title: 'Express' });
 });
 
-router.get('/ajout', async function(req, res, next) {
-  var order = await orderModel.findById(req.query.id)
-                              .populate('orders')
-                              .exec()
-
-console.log(req.query)
-  res.render('plannedjourney', { order });
-});
-
-router.get('/plannedjourney', function(req, res, next) {
-  res.render('plannedjourney', { title: 'Express' });
-});
 router.get('/popup', function(req, res, next) {
   res.render('popup', { title: 'Express' });
+});
+
+
+router.get('/ajout', function(req, res, next) {
+
+
+  if(req.session.panier === undefined){
+    req.session.panier=[]
+  }
+  req.session.panier.push(req.query)
+  console.log(req.session.panier)
+  res.redirect('/plannedjourney', );
+});
+router.get('/supprimer', function(req, res, next) {
+  req.session.panier.splice(req.query.position,1)
+  res.redirect('/plannedjourney', );
+});
+router.get('/plannedjourney', function(req, res, next) {
+  res.render('plannedjourney', {  panier:req.session.panier } );
 });
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {
