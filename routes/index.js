@@ -138,7 +138,7 @@ router.get('/save', async function(req, res, next) {
   console.log(user.orders)  
   for(var i =0; i<req.session.panier.length; i++){
     
-    user.orders[i].push({
+    user.orders.push({
       departure: req.session.panier[i].villedepart,
       arrival: req.session.panier[i].villearrivee,
       date: req.session.panier[i].date,
