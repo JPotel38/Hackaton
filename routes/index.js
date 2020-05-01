@@ -123,8 +123,41 @@ router.get('/supprimer', function(req, res, next) {
   res.redirect('/plannedjourney', );
 });
 router.get('/plannedjourney', function(req, res, next) {
+
+  console.log(req.query)
   res.render('plannedjourney', {  panier:req.session.panier } );
 });
+router.get('/save', async function(req, res, next) {
+
+ 
+  
+  
+  
+
+  var user = await userModel.findById(req.session.user.id)
+  console.log(user.orders)  
+  for(var i =0; i<req.session.panier.length; i++){
+    
+    user.orders[i].push({
+      departure: req.session.panier[i].villedepart,
+      arrival: req.session.panier[i].villearrivee,
+      date: req.session.panier[i].date,
+      departureTime: req.session.panier[i].heuredepart,
+      price: req.session.panier[i].prix,
+     }   )
+     
+    
+  } 
+  
+  var userSaved = await user.save()
+  
+       console.log(user)                 
+
+console.log(userSaved)
+
+  res.render('homepage', {  panier:req.session.panier, user, userSaved} );
+});
+
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {
 

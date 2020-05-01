@@ -27,7 +27,7 @@ router.post('/sign-up', async function(req,res,next){
       id: newUserSave._id,
     }
   
-    console.log(req.session.user)
+    console.log(req.session.user.id)
   
     res.redirect('/homepage')
   } else {
@@ -53,7 +53,7 @@ router.post('/sign-in', async function(req,res,next){
   } else {
     res.render('login')
   }
-
+console.log(req.session.user.id)
   
 })
 
