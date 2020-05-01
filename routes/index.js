@@ -78,20 +78,18 @@ var journeyDate = []
       date: dateFormat(journeys[i].date),
       departureTime: journeys[i].departureTime,
       price : journeys[i].price
-    })
-
-    
-
+    }) 
   }
 
 }
 console.log(journeyDate)
-console.log(journeys)
- 
-res.render('avalaiblejourney', { journeys, newJourney })
+if(journeyDate.length <=0) {
 
- })
+  res.redirect('/nofound');
+} else { 
 
+  res.render('avalaiblejourney', {journeyDate});
+}});
 
 router.get('/avalaiblejourney', function(req, res, next) {
 
@@ -101,11 +99,26 @@ router.get('/avalaiblejourney', function(req, res, next) {
 router.get('/nofound', function(req, res, next) {
   res.render('nofound', { title: 'Express' });
 });
-router.get('/plannedjourney', function(req, res, next) {
-  res.render('plannedjourney', { title: 'Express' });
-});
+
 router.get('/popup', function(req, res, next) {
   res.render('popup', { title: 'Express' });
+});
+
+
+router.get('/ajout', function(req, res, next) {
+  if(req.session.panier === undefined){
+    req.session.panier=[]
+  }
+  req.session.panier.push(req.query)
+  console.log(req.session.panier)
+  res.redirect('/plannedjourney', );
+});
+router.get('/supprimer', function(req, res, next) {
+  req.session.panier.splice(req.query.position,1)
+  res.redirect('/plannedjourney', );
+});
+router.get('/plannedjourney', function(req, res, next) {
+  res.render('plannedjourney', {  panier:req.session.panier } );
 });
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {

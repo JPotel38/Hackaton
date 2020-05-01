@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="cacher">
-        <%- include('navbar')%>
+    <%- include('navbar')%>
     <div class="container-fluid d-flex flex-column align-items-center" >
         <div class="col xs-12 col-md-10 col-lg-8  d-flex flex-column  mt-5 "  style="background-color: black;">
             <h4 class="titleForm offset-1">My tickets :</h4>
@@ -33,8 +30,7 @@
                         <td><%= panier[i].villedepart %>/<%= panier[i].villearrivee %></td>
                         <td><%= panier[i].date %></td>
                         <td><%= panier[i].heuredepart %> pm</td>
-                        <td id="price" type="number"><%= panier[i].prix %>€ <a href="/supprimer?position=<%=i%>" ><img src="/images/picto_poubelle.jpg" width="30px" ></a></td>
-        
+                        <td id="price" type="number"><%= panier[i].prix %>€</td>
                         <%totalCmd +=parseFloat(panier[i].prix)%>
                     </tr>
                 <% } %>
@@ -51,9 +47,6 @@
             <div class="d-flex flex-row-reverse"><button id="declencheur" class="btn btn-danger" >Confirm</button></div>
         </div>
     </div>
-    </div>
     
-    
-    <script src="../javascripts/scriptpopup.js"></script>
 </body>
 </html>
