@@ -3,6 +3,7 @@ var router = express.Router();
 
 const mongoose = require('mongoose');
 const journeyModel = require('../models/journey')
+const orderModel = require('../models/orders')
 const userModel = require('../models/users')
 
 // useNewUrlParser ;)
@@ -61,8 +62,8 @@ return format;
 
 console.log(newJourney.date)
 
-
 var journeyDate = []
+
 
  var journeys = await journeyModel.find({ 
    departure: newJourney.departure, 
@@ -81,6 +82,7 @@ var journeyDate = []
     }) 
   }
 
+  
 }
 console.log(journeyDate)
 if(journeyDate.length <=0) {
@@ -94,8 +96,9 @@ if(journeyDate.length <=0) {
 router.get('/avalaiblejourney', function(req, res, next) {
 
 
-  res.render('avalaiblejourney', { title: 'Express' });
+  res.render('avalaiblejourney', {journeyDate: journeyDate});
 });
+
 router.get('/nofound', function(req, res, next) {
   res.render('nofound', { title: 'Express' });
 });
@@ -106,6 +109,8 @@ router.get('/popup', function(req, res, next) {
 
 
 router.get('/ajout', function(req, res, next) {
+
+
   if(req.session.panier === undefined){
     req.session.panier=[]
   }
