@@ -1,9 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-<<<<<<< HEAD
- 
-=======
+  min-height: 100%;
   padding: 0;
   margin:0;
   background: rgb(122,188,255);
@@ -13,7 +11,6 @@ body {
 }
 .navbar:link{
   text-decoration:none;
->>>>>>> 997abcc24ef962efc6911c3d6720c400b5736434
 }
 
 a{
@@ -33,12 +30,22 @@ h6{
   background-color: white;
   border-radius: 1%;
 }
-<<<<<<< HEAD
-
-=======
 .bouton{
   height:  10% max-content;;
   margin-top: 5%;
   margin-bottom: 5%;
 }
->>>>>>> 997abcc24ef962efc6911c3d6720c400b5736434
+.landmark{
+  width: 40%;
+}
+#plannedjourney{
+  overflow: hidden;
+  max-width:100%;
+  background-color: white;
+}
+#id{
+  width: 10%;
+}
+#tempo{
+  border-radius: 1%;
+}

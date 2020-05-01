@@ -83,6 +83,15 @@ router.get('/avaiblejourney', function(req, res, next) {
 
   res.render('avaiblejourney', { title: 'Express' });
 });
+router.get('/nofound', function(req, res, next) {
+  res.render('nofound', { title: 'Express' });
+});
+router.get('/plannedjourney', function(req, res, next) {
+  res.render('plannedjourney', { title: 'Express' });
+});
+router.get('/popup', function(req, res, next) {
+  res.render('popup', { title: 'Express' });
+});
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {
 

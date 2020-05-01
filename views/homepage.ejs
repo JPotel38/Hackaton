@@ -9,44 +9,32 @@
     <link rel="stylesheet" href="./stylesheets/style.css">
   </head>
   <body>
-
-
-
-      <div class="home">
-
-        <div class="row">
-
-            <!-- SIGN UP AREA -->
-          <div class="col-12 col-sm-6 text-center">
-
-            <div class="formArea">
-              <h4 class="titleForm">One-Way Ticket :</h4>
-
-              <form action="/cities" method="POST">
-                <div class="form-group">
-                  
+    <%- include('navbar') %> 
+      <div class="container-fluid d-flex flex-column align-items-center">
+          <!-- SIGN UP AREA -->
+          <div class="col xs-12 col-md-10 col-lg-8  d-flex flex-column  mt-5 " style="background-color: black;">
+            <h4 class="titleForm">One-Way Ticket :</h4>
+            <div class="formArea  offset-1">           
+              <form action="/cities" method="POST" class="d-md-inline-flex align-items-center justify-content-around mt-2">
+                <div class="form-group mr-3">
                   <input name="toCityFromFront" type="text" class="form-control" placeholder="From: Paris, Marseille...">
                 </div>
-                <div class="form-group">
-                  
-                  <input name="fromCityFromFront" type="text" class="form-control" placeholder="To: Lille, Nates...">
+                <div class="form-group mr-3">
+                  <input name="fromCityFromFront" type="text" class="form-control" placeholder="To: Lille, Nantes...">
                 </div>
-
-                <div class="form-group">
-
-                   
-
-                <input type="date" id="date" name="dateFromFront" value="2018-01-01" min="2018-01-01" max="2020-12-31">
-              
-                    
-                  </div>
-
-
-                <button type="submit" class="btn btn-info">Go</button>
+                <div class="form-group mr-3">
+                  <input type="date" id="date" name="dateFromFront" class="form-control" value="2018-01-01" min="2018-01-01" max="2020-12-31">
+                </div>
+                <div class="form-group mr-3">
+                  <button type="submit" class="btn btn-danger">Go</button>
+                </div>
               </form>
             </div>
-
           </div>
+          <div class="d-none d-md-block mt-5 text-center " style="background-color: red;">
+            <img src="/images/landmark.png" class="landmark"> 
+          </div>
+        </div>
 
 
 
