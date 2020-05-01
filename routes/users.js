@@ -26,9 +26,9 @@ router.post('/sign-up', async function(req,res,next){
       name: newUserSave.name,
       id: newUserSave._id,
     }
-  
-    console.log(req.session.user.id)
-  
+    if(req.session.panier === undefined){
+      req.session.panier=[]
+    }
     res.redirect('/homepage')
   } else {
     res.redirect('/')
@@ -44,10 +44,12 @@ router.post('/sign-in', async function(req,res,next){
   })
 
   if(searchUser!= null){
-    console.log(searchUser)
     req.session.user = {
       name: searchUser.name,
       id: searchUser._id
+    }
+    if(req.session.panier === undefined){
+      req.session.panier=[]
     }
     res.redirect('/homepage')
   } else {
